@@ -12,6 +12,8 @@ A magic hologram is only real while the toy is still there. Once Alice leaves an
 
 ## The three steps
 
+All three steps are in [`src/main.rs`](src/main.rs). Keep it open as you read.
+
 1. **Functions.** Alice owns a Robot and Bob owns a Teddy Bear. `pick_longer` borrows both toy names and returns a reference to whichever name is longer:
 
    ```rust
@@ -48,7 +50,7 @@ Bob looks at: Teddy Bear
 
 ## Try it yourself
 
-1. Uncomment each `/* ... */` block in `main` one at a time and run `cargo run`. Each one fails because a toy is dropped while someone still needs it:
+1. Uncomment each `/* ... */` block in [`src/main.rs`](src/main.rs) one at a time and run `cargo run`. Each one fails because a toy is dropped while someone still needs it:
 
    ```
    `bob_toy` does not live long enough     (step 1)
