@@ -1,4 +1,4 @@
-<p align="center">
+<p align="left">
   <img src="https://www.rust-lang.org/logos/rust-logo-128x128.png" alt="Rust logo" width="96">
    &nbsp;&nbsp;
   <img src="https://rustacean.net/assets/rustacean-flat-happy.svg" alt="Ferris, the Rust crab mascot" width="140">
