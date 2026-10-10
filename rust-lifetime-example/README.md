@@ -20,7 +20,11 @@ struct Borrower<'a> {
 }
 ```
 
-`'a` ties Bob's magic hologram to Alice's toy. Bob can keep the magic hologram only while Alice still has the Robot.
+`'a` is a *lifetime parameter*: a name for "how long Bob's magic hologram can be used". Alice's toy must live at least that long. Read it as "tick a".
+
+`'a` ties Bob's magic hologram to Alice's toy. It doesn't keep the Robot alive. It only lets Rust check that Bob never uses the hologram after the Robot is gone.
+
+In `main` ([lines 9–14](src/main.rs#L9-L14)), Bob uses his magic hologram inside the same `{ }` where Alice's Robot lives, so it compiles.
 
 ## Run it
 
@@ -31,18 +35,55 @@ cargo run
 Output:
 
 ```
-Bob is holding: Robot
+Bob's magic hologram shows: Robot
 ```
 
 ## Try it yourself
 
-1. Uncomment the `/* ... */` block in [`src/main.rs`](src/main.rs) and run `cargo run`. Alice's Robot is dropped while Bob still holds a magic hologram of it, so Rust refuses to compile:
+1. In [`src/main.rs`](src/main.rs#L17-L26), uncomment the block on lines 17–26 by deleting the `/*` on line 17 and the `*/` on line 26:
+
+   ```rust
+   let bob;
+
+   {
+       let alice_toy = String::from("Robot");
+       bob = Borrower { toy: &alice_toy };
+   } // Alice's toy is dropped here.
+
+   println!("Bob's magic hologram shows: {}", bob.toy);
+   ```
+
+   Run `cargo run`. Alice's Robot is dropped, then Bob uses his magic hologram of it, so Rust refuses to compile:
 
    ```
    `alice_toy` does not live long enough
    ```
 
-2. Remove `<'a>` from `struct Borrower`. The compiler asks for a lifetime:
+2. In the same block, delete the `println!` line at the end ([line 25](src/main.rs#L25) in the original file):
+
+   ```rust
+   println!("Bob's magic hologram shows: {}", bob.toy);
+   ```
+
+   Run `cargo run` again. It compiles, with only warnings about `bob` being unused. Holding a magic hologram of a toy that's gone is fine. *Using* it is what Rust stops. In Rust's terms, a reference's lifetime ends at its last use, not at the closing `}`.
+
+3. In [`src/main.rs`](src/main.rs#L3-L5), remove both `'a`s from `struct Borrower` on lines 3–5. Change this:
+
+   ```rust
+   struct Borrower<'a> {
+       toy: &'a str,
+   }
+   ```
+
+   to this:
+
+   ```rust
+   struct Borrower {
+       toy: &str,
+   }
+   ```
+
+   Run `cargo run`. The compiler asks for a lifetime:
 
    ```
    missing lifetime specifier

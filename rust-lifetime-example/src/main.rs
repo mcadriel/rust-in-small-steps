@@ -10,10 +10,10 @@ fn main() {
         let alice_toy = String::from("Robot");
         let bob = Borrower { toy: &alice_toy };
 
-        println!("Bob is holding: {}", bob.toy);
+        println!("Bob's magic hologram shows: {}", bob.toy);
     } // Alice's toy is dropped here.
 
-    // Uncomment this block: Bob still holds the magic hologram after the toy is gone.
+    // Uncomment this block: Bob uses the magic hologram after the toy is gone.
     /*
     let bob;
 
@@ -22,6 +22,6 @@ fn main() {
         bob = Borrower { toy: &alice_toy };
     } // Alice's toy is dropped here.
 
-    println!("Bob is holding: {}", bob.toy);
+    println!("Bob's magic hologram shows: {}", bob.toy);
     */
 }
