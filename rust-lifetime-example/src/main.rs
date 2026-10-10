@@ -7,7 +7,11 @@ struct Borrower<'a> {
 // The result is one of the two inputs, so it can only live
 // as long as the shorter-lived of the two.
 fn pick_longer<'a>(first: &'a str, second: &'a str) -> &'a str {
-    if first.len() >= second.len() { first } else { second }
+    if first.len() >= second.len() { 
+        first 
+    } else { 
+        second 
+    }
 }
 
 // One reference in, one reference out: Rust fills in the lifetime for you.
