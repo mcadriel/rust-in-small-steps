@@ -13,7 +13,7 @@ Start small, run the code, and experiment at your own pace.
 | Example | Idea | You'll learn |
 |---|---|---|
 | [PhantomData](rust-phantomdata-example/) | Type-safe IDs | Use `PhantomData<T>` so the compiler stops you from mixing up a user ID and an order ID |
-| [Lifetimes](rust-lifetime-example/) | Borrowing toys | Lifetimes in functions and structs, and when Rust fills them in for you (elision) |
+| [Lifetimes](rust-lifetime-example/) | Borrowing toys | Why a struct holding a reference needs a lifetime, and why Rust rejects one that outlives its data |
 
 Each folder has its own README that explains the idea, shows the expected output, and suggests things to try.
 
