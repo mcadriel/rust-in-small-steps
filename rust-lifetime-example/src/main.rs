@@ -1,5 +1,5 @@
-// Bob doesn't own Alice's toy. He holds a map that points to it.
-// `'a` says: the map can't outlive the toy it points to.
+// Bob doesn't own Alice's toy. He holds a magic hologram of it.
+// `'a` says: the magic hologram can't outlive the toy it shows.
 struct Borrower<'a> {
     toy: &'a str,
 }
@@ -7,10 +7,10 @@ struct Borrower<'a> {
 // The result is one of the two inputs, so it can only live
 // as long as the shorter-lived of the two.
 fn pick_longer<'a>(first: &'a str, second: &'a str) -> &'a str {
-    if first.len() >= second.len() { 
-        first 
-    } else { 
-        second 
+    if first.len() >= second.len() {
+        first
+    } else {
+        second
     }
 }
 
@@ -23,7 +23,7 @@ fn main() {
     // Step 1. Functions: the returned reference can't outlive either input.
     {
         let alice_toy = String::from("Robot");
-        let bob_toy = String::from("Map");
+        let bob_toy = String::from("Magic Hologram");
 
         let longer = pick_longer(&alice_toy, &bob_toy);
         println!("Longer toy name: {longer}");
@@ -35,14 +35,14 @@ fn main() {
     let longer;
 
     {
-        let bob_toy = String::from("Map");
+        let bob_toy = String::from("Magic Hologram");
         longer = pick_longer(&alice_toy, &bob_toy);
     } // Bob's toy is dropped here.
 
     println!("Longer toy name: {longer}");
     */
 
-    // Step 2. Structs: Bob's map is only valid while Alice's toy exists.
+    // Step 2. Structs: Bob's magic hologram is only valid while Alice's toy exists.
     {
         let alice_toy = String::from("Robot");
         let bob = Borrower { toy: &alice_toy };
@@ -50,7 +50,7 @@ fn main() {
         println!("Bob is holding: {}", bob.toy);
     }
 
-    // Uncomment this block: Bob still holds the map after the toy is gone.
+    // Uncomment this block: Bob still holds the magic hologram after the toy is gone.
     /*
     let bob;
 
@@ -63,8 +63,10 @@ fn main() {
     */
 
     // Step 3. Elision: no `'a` needed when the rule is obvious.
-    let bob_toy = String::from("Teddy Bear");
-    let seen = look_at(&bob_toy);
+    {
+        let bob_toy = String::from("Teddy Bear");
+        let seen = look_at(&bob_toy);
 
-    println!("Bob looks at: {seen}");
+        println!("Bob looks at: {seen}");
+    }
 }
