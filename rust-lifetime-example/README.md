@@ -12,7 +12,7 @@ A magic hologram is only real while the toy is still there. Once Alice leaves an
 
 ## The three steps
 
-1. **Functions.** Alice has a Robot and Bob has a Magic Hologram (here just a toy he owns). `pick_longer` looks at both and hands back whichever name is longer:
+1. **Functions.** Alice owns a Robot and Bob owns a Teddy Bear. `pick_longer` borrows both toy names and returns a reference to whichever name is longer:
 
    ```rust
    fn pick_longer<'a>(first: &'a str, second: &'a str) -> &'a str
@@ -41,7 +41,7 @@ cargo run
 Output:
 
 ```
-Longer toy name: Magic Hologram
+Longer toy name: Teddy Bear
 Bob is holding: Robot
 Bob looks at: Teddy Bear
 ```
@@ -55,7 +55,7 @@ Bob looks at: Teddy Bear
    `alice_toy` does not live long enough   (step 2)
    ```
 
-   In step 1, Bob's Magic Hologram is dropped before `longer` is used. In step 2, Alice's Robot is dropped while Bob still holds a magic hologram of it.
+   In step 1, Bob's Teddy Bear is dropped before `longer` is used. In step 2, Alice's Robot is dropped while Bob still holds a magic hologram of it.
 
 2. Remove `<'a>` and every `'a` from `pick_longer`. The compiler asks for a lifetime:
 

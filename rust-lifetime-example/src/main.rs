@@ -23,7 +23,7 @@ fn main() {
     // Step 1. Functions: the returned reference can't outlive either input.
     {
         let alice_toy = String::from("Robot");
-        let bob_toy = String::from("Magic Hologram");
+        let bob_toy = String::from("Teddy Bear");
 
         let longer = pick_longer(&alice_toy, &bob_toy);
         println!("Longer toy name: {longer}");
@@ -35,7 +35,7 @@ fn main() {
     let longer;
 
     {
-        let bob_toy = String::from("Magic Hologram");
+        let bob_toy = String::from("Teddy Bear");
         longer = pick_longer(&alice_toy, &bob_toy);
     } // Bob's toy is dropped here.
 
