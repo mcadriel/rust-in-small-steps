@@ -4,6 +4,8 @@ Use the type system to stop you from mixing up IDs that look the same.
 
 ## The idea
 
+![PhantomData in Rust: like a label on a box, PhantomData<T> mentions T without storing one. It takes 0 bytes, but the compiler still checks the relationship it describes.](images/phantomdata-in-rust.png)
+
 A user ID and an order ID are both just numbers. If both are plain `u64`, nothing stops you from passing an order ID where a user ID belongs.
 
 This example gives each ID a label:
