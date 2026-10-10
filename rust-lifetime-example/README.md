@@ -4,6 +4,8 @@ A reference can never outlive the thing it points to. Lifetimes are how Rust che
 
 ## The idea
 
+![Why lifetimes matter in Rust: Alice owns a toy robot, Bob borrows it, and once Alice's scope ends the toy is dropped, so Bob's reference can no longer be used.](images/why-lifetimes-matter.png)
+
 Alice and Bob each own toys, and sometimes one borrows from the other. A borrow is only allowed while the toy still exists. Once a toy is gone, a reference to it would point at nothing, so Rust refuses to compile that code.
 
 You've seen this rule before in other languages as a "dangling pointer" bug. Rust catches it at compile time.
