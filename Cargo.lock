@@ -3,6 +3,10 @@
 version = 4
 
 [[package]]
+name = "rust-cow-example"
+version = "0.1.0"
+
+[[package]]
 name = "rust-lifetime-example"
 version = "0.1.0"
 

@@ -14,6 +14,7 @@ Start small, run the code, and experiment at your own pace.
 |---|---|---|
 | [PhantomData](rust-phantomdata-example/) | Type-safe IDs | Use `PhantomData<T>` so the compiler stops you from mixing up a user ID and an order ID |
 | [Lifetimes](rust-lifetime-example/) | Borrowing toys | Why a struct holding a reference needs a lifetime, and why Rust rejects using it after its data is gone |
+| [Cow](rust-cow-example/) | Clone-on-write | Borrow data for free, read it without cloning, and let `to_mut()` clone only when you actually need to change it |
 
 Each folder has its own README that explains the idea, shows the expected output, and suggests things to try.
 
