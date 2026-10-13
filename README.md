@@ -41,3 +41,7 @@ Every example has code you can switch on to see what the compiler says:
 - **"Try it yourself" in each README.** Small changes to make, like removing a lifetime or adding your own type.
 
 Breaking the code on purpose is the fastest way to learn what Rust protects you from.
+
+## Support Rust in Small Steps ⭐
+
+If this repository helps you learn Rust, consider giving it a star! It shows your support and may help more developers discover these resources.
