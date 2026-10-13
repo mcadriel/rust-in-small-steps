@@ -1,3 +1,5 @@
+<p align="center">“Learning Rust starts with understanding how the code works—and why it behaves that way.”</p>
+
 <h1 align="left">
   <img src="images/rust-in-small-steps-banner.png" alt="Rust in Small Steps" width="100%">
 </h1>
