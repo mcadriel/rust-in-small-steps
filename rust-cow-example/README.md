@@ -13,7 +13,7 @@ Most of the time you only need to *look* at a piece of data. Cloning it just in 
 - `Cow::Borrowed(&data)` points at someone else's data. Reading is free, nothing is cloned.
 - `Cow::Owned(data)` holds its own copy that you can change.
 
-You start on the **Borrow** side. You **Read** as much as you like. The moment you need to **Mutate**, you call `to_mut()`, and Cow clones the borrowed data into an owned copy and hands you a `&mut` to it. That's the "clone-on-write" in the name.
+You start on the **Borrow** side. You **Read** as much as you like. The moment you need to **Mutate**, you call `to_mut()` on a `mut` binding, and Cow clones the borrowed data into an owned copy and hands you a `&mut` to it. That's the "clone-on-write" in the name.
 
 If the Cow is already owned, `to_mut()` just gives you the existing value. It never clones twice.
 
