@@ -36,6 +36,8 @@ text.to_mut().push_str(" is fun");
 
 `Cow<str>` is short for `Cow<'_, str>`: a Cow that either borrows a `&str` or owns a `String`. The `state` helper on [lines 6–11](src/main.rs#L6-L11) matches on the two sides so you can watch the switch happen.
 
+`text` is declared `mut` because `to_mut()` takes `&mut self`: it may need to replace the borrowed side with a freshly cloned `String`. Reading through `text.len()` or `{text}` needs no `mut` at all.
+
 ## Run it
 
 ```sh
@@ -56,7 +58,7 @@ The first two lines never clone. The third line is where `to_mut()` clones. The 
 
 ## Try it yourself
 
-1. A `Cow::Borrowed` is a real borrow, so the usual borrowing rules apply. Change `let original` on [line 14](src/main.rs#L14) to `let mut original`, then add this line right after the `Borrow` `println!` on [line 18](src/main.rs#L18):
+1. A `Cow::Borrowed` is a real borrow, so the usual borrowing rules apply. Change `let original` on [line 14](src/main.rs#L14) to `let mut original`, then add this line right after the `Borrow` `println!` on [line 19](src/main.rs#L19):
 
    ```rust
    original.push_str("?");
@@ -68,9 +70,9 @@ The first two lines never clone. The third line is where `to_mut()` clones. The 
    cannot borrow `original` as mutable because it is also borrowed as immutable
    ```
 
-   Now move that same line to just above `// The original was never touched.` on [line 32](src/main.rs#L32). It compiles, because `text` is never used after that point, so its borrow of `original` has already ended. Undo both changes before step 2.
+   Now move that same line to just above `// The original was never touched.` on [line 33](src/main.rs#L33). It compiles, because `text` is never used after that point, so its borrow of `original` has already ended. Undo both changes before step 2.
 
-2. On [line 17](src/main.rs#L17), start on the owned side instead. Change this:
+2. On [line 18](src/main.rs#L18), start on the owned side instead. Change this:
 
    ```rust
    let mut text: Cow<str> = Cow::Borrowed(&original);

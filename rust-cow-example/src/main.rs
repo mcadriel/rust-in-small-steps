@@ -14,6 +14,7 @@ fn main() {
     let original = String::from("Rust");
 
     // Borrow: the Cow points at `original`. Nothing is cloned.
+    // `mut` is needed only because `to_mut()` below takes `&mut self`.
     let mut text: Cow<str> = Cow::Borrowed(&original);
     println!("Borrow: {text} -> {}", state(&text));
 
