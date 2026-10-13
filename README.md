@@ -6,9 +6,15 @@
 
 <p align="left">Learn Rust one small, clear example at a time.</p>
 
-A collection of simple, readable Rust examples designed to make sense just by looking at the code. Each example focuses on one idea, with clear names and straightforward logic.
+## Introduction
 
-Start small, run the code, and experiment at your own pace.
+AI can generate code quickly, but we still need to understand what we build. In Rust, that means understanding how ownership, borrowing, lifetimes, and error handling affect the way our programs behave. Code that compiles is a starting point; we also need to know whether it does what we intend.
+
+**Rust in Small Steps** is for experienced engineers who are new to Rust. Each example focuses on one idea, using clear names and straightforward logic to help you connect the code with the rules behind it.
+
+Use AI as a learning partner. Ask it to explain a compiler error, suggest an alternative, or challenge your understanding. Then run the code, test its suggestions, and make sure you can explain the result yourself.
+
+Start small, experiment at your own pace, and build understanding one step at a time.
 
 ## Examples
 
@@ -16,7 +22,7 @@ Start small, run the code, and experiment at your own pace.
 |---|---|---|
 | [PhantomData](rust-phantomdata-example/) | Type-safe IDs | Use `PhantomData<T>` so the compiler stops you from mixing up a user ID and an order ID |
 | [Lifetimes](rust-lifetime-example/) | Borrowing toys | Why a struct holding a reference needs a lifetime, and why Rust rejects using it after its data is gone |
-| [Cow](rust-cow-example/) | Clone-on-write | Borrow data for free, read it without cloning, and let `to_mut()` clone only when you actually need to change it |
+| [Cow](rust-cow-example/) | Clone-on-write | Borrow data without cloning, and let `to_mut()` clone borrowed data when you need to change it |
 
 Each folder has its own README that explains the idea, shows the expected output, and suggests things to try.
 
@@ -37,10 +43,10 @@ Then open `src/main.rs` and read it top to bottom. The examples are short on pur
 
 Every example has code you can switch on to see what the compiler says:
 
-- **Commented-out lines or `/* ... */` blocks.** Uncomment one and run `cargo run` again. Most of them are meant to fail, so you can read the compiler's error and see the rule it enforces.
-- **"Try it yourself" in each README.** Small changes to make, like removing a lifetime or adding your own type.
+- **Commented-out lines or `/* ... */` blocks.** Uncomment one and run `cargo run` again. Most are meant to fail, so you can read the compiler's error and see the rule it enforces.
+- **"Try it yourself" in each README.** Make small changes, like removing a lifetime or adding your own type.
 
-Breaking the code on purpose is the fastest way to learn what Rust protects you from.
+Breaking the code on purpose helps you learn what Rust protects you from. Before running a change, predict what will happen. Then compare your prediction with the result.
 
 ## Support Rust in Small Steps ⭐
 
